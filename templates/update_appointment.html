@@ -1,0 +1,58 @@
+<!-- update_appointment.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Appointment</title>
+    <link rel="stylesheet" href="../static/css/appointments.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">Hospital Management System</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{url_for('home')}}">Home</a></li>
+                    <li><a href="{{url_for('appointments')}}">View Appointments</a></li>
+                    <li><a href="{{url_for('logout')}}">Log Out</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="appointments-section">
+        <div class="container">
+            <h2>Update Appointment</h2>
+            <form action="{{ url_for('update_appointment', appt_id=appt_id) }}" method="post" class="appointment-form">
+                <div class="input-group">
+                    <label for="patient_name">Your Name</label>
+                    <input type="text" name="patient_name" id="patient_name" value="{{ appt_data.patient_name }}" readonly required>
+                </div>
+                <div class="input-group">
+                    <label for="doctor_name">Doctor's Name</label>
+                    <input type="text" name="doctor_name" id="doctor_name" value="{{ appt_data.doctor_name }}" readonly required>
+                </div>
+                <div class="input-group">
+                    <label for="date">Date</label>
+                    <input type="date" name="date" id="date" value="{{ appt_data.date }}" required>
+                </div>
+                <div class="input-group">
+                    <label for="time">Time</label>
+                    <input type="time" name="time" id="time" value="{{ appt_data.time }}" required>
+                </div>
+                <div class="input-group">
+                    <label for="reason">Reason</label>
+                    <input type="text" name="reason" id="reason" value="{{ appt_data.reason }}" required>
+                </div>
+                <button type="submit" class="btn-primary update-btn">Update Appointment</button>
+                <a href="{{ url_for('appointments') }}" class="btn-primary cancel-btn">Cancel</a>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Hospital Management System</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,277 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    font-size: 16px;
+}
+
+.appointments-section {
+    padding: 40px 20px;
+    background-color: #f4f4f9;
+    min-height: calc(100vh - 160px); /* header + footer approx */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.appointments-section .container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+}
+
+.appointments-section h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 30px;
+    color: #4e4e9f;
+}
+
+/* Appointment List Styling */
+.appointment-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.appointment-item {
+    background-color: #f9f9fc;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-left: 5px solid #4e4e9f;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.appointment-item strong {
+    color: #4e4e9f;
+}
+
+/* No Appointments Message */
+.appointments-section p {
+    text-align: center;
+    color: #666;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: #f8c037;
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 16px;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    border: 2px solid #f8c037;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #333;
+    color: #f8c037;
+    transform: translateY(-3px);
+}
+
+.update-btn {
+    background-color: #4e4e9f;
+    border-color: #4e4e9f;
+    margin-right: 10px;
+    color: #fff; /* Set text color to white */
+}
+
+.update-btn:hover {
+    background-color: #333;
+    color: #fff; /* Keep text color white on hover */
+}
+
+.cancel-btn {
+    background-color: #e74c3c;
+    border-color: #e74c3c;
+    color: #fff; /* Set text color to white */
+}
+
+.cancel-btn:hover {
+    background-color: #333;
+    color: #fff; /* Keep text color white on hover */
+}
+
+.back-btn {
+    display: block;
+    margin: 20px auto 0;
+    text-align: center;
+}
+
+/* Appointment Actions Container */
+.appointment-actions {
+    margin-top: 15px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .appointments-section .container {
+        padding: 25px;
+    }
+
+    .appointment-item {
+        padding: 15px;
+    }
+
+    .appointments-section h2 {
+        font-size: 20px;
+    }
+
+    .btn-primary {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+}
+
+/* Header (Unchanged) */
+header {
+    background: #fff;
+    padding: 18px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    color: #000;
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-left: 20px;
+    transition: all 0.3s ease;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+header nav ul li {
+    margin: 0 20px;
+}
+
+header nav ul li a {
+    font-weight: 600;
+    color: hsl(190, 64%, 18%);
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: #f8c037;
+}
+
+.popup {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: #dbdbdb;
+    padding: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    width: 400px;
+    height: 500px;
+    border-radius: 10px;
+}
+
+.popup p {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    font-size: 17px;
+}
+
+.profile-icon {
+    cursor: pointer;
+    height: 40px;
+    width: 55px;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* Form Styles for Update Appointment */
+.appointment-form .input-group {
+    margin-bottom: 20px;
+}
+
+.appointment-form .input-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.appointment-form .input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+.appointment-form .input-group input:focus {
+    border-color: #4e4e9f;
+    outline: none;
+}
+
+/* Center the buttons */
+.appointment-form .btn-primary {
+    margin: 10px 5px 0;
+}
+
+/* Assuming styles.css has similar input styling as login-register.css */
+.input-group input[readonly],
+.appointment-item input[readonly] {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+    color: #666;
+    width: auto;
+    display: inline-block;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Adjust styling for the appointment list */
+.appointment-item input[type="date"],
+.appointment-item input[type="time"] {
+    margin-left: 5px;
+}

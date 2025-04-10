@@ -1,0 +1,67 @@
+<!-- doctor_home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System - Doctor</title>
+    <link rel="stylesheet" href="../static/css/stylesdoctor.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">Hospital Management System</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{url_for('home')}}">Home</a></li>
+                    <li><a href="{{url_for('appointments')}}">View Appointments</a></li>
+                    <li><a href="{{url_for('logout')}}">Log Out</a></li>
+                    <li>
+                        <img src="../static/images/profile.png" alt="Profile Icon" class="profile-icon" onclick="togglePopup()">
+                        <div id="profilePopup" class="popup">
+                            {% if user_info %}
+                                <p><strong>Username:</strong> {{ user_info.username }}</p>
+                                <p><strong>Email:</strong> {{ user_info.email }}</p>
+                                <p><strong>Date of Birth:</strong> {{ user_info.dob }}</p>
+                                <p><strong>Telephone:</strong> {{ user_info.telephone }}</p>
+                            {% else %}
+                                <p>Profile information unavailable.</p>
+                            {% endif %}
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Hi {{email}}, Welcome to the Hospital Management System</h2>
+            <p>Manage your appointments and patient records easily and securely.</p>
+            <a href="{{url_for('appointments')}}" class="btn-primary">View Appointments</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Hospital Management System</p>
+        </div>
+    </footer>
+
+    <script>
+        function togglePopup() {
+            var popup = document.getElementById("profilePopup");
+            popup.style.display = popup.style.display === "none" || popup.style.display === "" ? "block" : "none";
+        }
+
+        window.addEventListener("click", function(event) {
+            var popup = document.getElementById("profilePopup");
+            var icon = document.querySelector(".profile-icon");
+            if (!popup.contains(event.target) && event.target !== icon) {
+                popup.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>

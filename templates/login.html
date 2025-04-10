@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HMS Login</title>
+    <link rel="stylesheet" href="../static/css/login-register.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1>Hospital Management System</h1>
+        </div>
+    </header>
+
+    <!-- Login Form Section -->
+    <section class="login-section">
+        <div class="login-container">
+            <h2>Login to Your Account</h2>
+
+            <form action="/login" method="POST">
+                <!-- Account Type Selection -->
+                <div class="input-group">
+                    <label for="account_type">Login As</label>
+                    <select id="account_type" name="account_type" required>
+                        <option value="">-- Select --</option>
+                        <option value="user">User</option>
+                        <option value="doctor">Doctor</option>
+                    </select>
+                </div>
+
+                <!-- Email -->
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+
+                <!-- Password -->
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+
+                <!-- Error message -->
+                {% if error %}
+                <p style="color: red; margin-bottom: 15px; margin-top: 15px;">{{ error }}</p>
+                {% endif %}
+
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
+
+            <div class="register-link">
+                <p>Don't have an account? <a href="{{ url_for('register') }}">Register here</a></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Hospital Management System</p>
+    </footer>
+</body>
+</html>

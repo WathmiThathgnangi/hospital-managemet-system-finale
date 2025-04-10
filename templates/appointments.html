@@ -1,0 +1,85 @@
+<!-- appointments.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Appointments</title>
+    <link rel="stylesheet" href="../static/css/appointments.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1 class="logo">Hospital Management System</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{url_for('home')}}">Home</a></li>
+                    <li><a href="{{url_for('appointments')}}">View Appointments</a></li>
+                    <li><a href="{{url_for('logout')}}">Log Out</a></li>
+                    <li>
+                        <img src="../static/images/profile.png" alt="Profile Icon" class="profile-icon" onclick="togglePopup()">
+                        <div id="profilePopup" class="popup">
+                            {% if user_info %}
+                                <p><strong>Username:</strong> {{ user_info.username }}</p>
+                                <p><strong>Email:</strong> {{ user_info.email }}</p>
+                                <p><strong>Date of Birth:</strong> {{ user_info.dob }}</p>
+                                <p><strong>Telephone:</strong> {{ user_info.telephone }}</p>
+                            {% else %}
+                                <p>Profile information unavailable.</p>
+                            {% endif %}
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="appointments-section">
+        <div class="container">
+            <h2>Upcoming Appointments</h2>
+            {% if appointments %}
+            <ul class="appointment-list">
+                {% for appointment in appointments %}
+                <li class="appointment-item">
+                    <strong>Date:</strong> {{ appointment.date }}<br>
+                    <strong>Time:</strong> {{ appointment.time }}<br>
+                    <strong>Doctor:</strong> {{ appointment.doctor_name }}<br>
+                    <strong>Reason:</strong> {{ appointment.reason }}<br>
+                    <div class="appointment-actions">
+                        <form action="{{ url_for('update_appointment', appt_id=appointment.id) }}" method="get" style="display:inline;">
+                            <button type="submit" class="btn-primary update-btn">Update</button>
+                        </form>
+                        <form action="{{ url_for('cancel_appointment', appt_id=appointment.id) }}" method="post" style="display:inline;">
+                            <button type="submit" class="btn-primary cancel-btn" onclick="return confirm('Are you sure you want to cancel this appointment?');">Cancel</button>
+                        </form>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No appointments scheduled.</p>
+            {% endif %}
+            <a href="{{ url_for('home') }}" class="btn-primary">Back to Home</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Hospital Management System</p>
+    </footer>
+
+    <script>
+        function togglePopup() {
+            var popup = document.getElementById("profilePopup");
+            popup.style.display = popup.style.display === "none" || popup.style.display === "" ? "block" : "none";
+        }
+
+        window.addEventListener("click", function(event) {
+            var popup = document.getElementById("profilePopup");
+            var icon = document.querySelector(".profile-icon");
+            if (!popup.contains(event.target) && event.target !== icon) {
+                popup.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,1 +1,2 @@
-# hospital-managemet-system-finale
+# hospital-management-system
+This is my hospital management system
